@@ -31,7 +31,7 @@ public class ActivityPassword extends AppCompatActivity {
     private String resultText = "";
     private int currentInputValue = 0;
 
-    
+
 
 
     @Override
