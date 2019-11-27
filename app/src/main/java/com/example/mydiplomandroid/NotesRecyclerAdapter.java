@@ -90,38 +90,40 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
                     return true;
                 }
             });
+
+
         }
-    }
 
-    //активити для редактирования существующей записи
-    private void editNote(int position) {
-        Note note = notesModels.get(position);
-        Intent intent = new Intent(context, ActivityNote.class);
-        intent.putExtra("id", note.getId());
-        context.startActivity(intent);
-    }
+        //активити для редактирования существующей записи
+        private void editNote(int position) {
+            Note note = notesModels.get(position);
+            Intent intent = new Intent(context, ActivityNote.class);
+            intent.putExtra("id", note.getId());
+            context.startActivity(intent);
+        }
 
-    //удаление  записи
-    private void removeNote(final int position) {
-        final NotesRepository noteRepository = App.getInstance().getNotesRepository();
-        final Note note = notesModels.get(position);
+        //удаление  записи
+        private void removeNote(final int position) {
+            final NotesRepository noteRepository = App.getInstance().getNotesRepository();
+            final Note note = notesModels.get(position);
 
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-        dialogBuilder.setMessage(R.string.note_delete);
-        dialogBuilder.setTitle(R.string.dialog_note_title_delete);
-        dialogBuilder.setIcon(R.drawable.ic_delete);
-        dialogBuilder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                noteRepository.deleteNote(note); //удаляем данные из базы
-                notesModels.remove(position); //удаляем данны из текущего списка
-                notifyDataSetChanged(); //уведомляем адаптер об изменениях
-            }
-        });
-        dialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-            }
-        });
-        AlertDialog dialog = dialogBuilder.create();
-        dialog.show();
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+            dialogBuilder.setMessage(R.string.note_delete);
+            dialogBuilder.setTitle(R.string.dialog_note_title_delete);
+            dialogBuilder.setIcon(R.drawable.ic_delete);
+            dialogBuilder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    noteRepository.deleteNote(note); //удаляем данные из базы
+                    notesModels.remove(position); //удаляем данны из текущего списка
+                    notifyDataSetChanged(); //уведомляем адаптер об изменениях
+                }
+            });
+            dialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                }
+            });
+            AlertDialog dialog = dialogBuilder.create();
+            dialog.show();
+        }
     }
 }

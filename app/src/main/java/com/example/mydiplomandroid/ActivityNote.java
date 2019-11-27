@@ -59,7 +59,7 @@ public class ActivityNote extends AppCompatActivity {
     private void initNoteValue() {
         currentNote = noteRepository.getNoteById(noteid);
         inputTitle.setText(currentNote.getNoteTitle());
-       inputSubtitle.setText(currentNote.getNoteDescription());
+        inputSubtitle.setText(currentNote.getNoteDescription());
         Date dateDeadline = currentNote.getDateDeadline();
         if (dateDeadline != null) {
             chbDeadLine.setChecked(true);
@@ -69,7 +69,7 @@ public class ActivityNote extends AppCompatActivity {
     }
 
     //сохраняем запись
-     public void onSaveNoteClick() {
+    public void onSaveNoteClick() {
         String nameStr = inputTitle.getText().toString();
         String descStr = inputSubtitle.getText().toString();
         String deadlineDateStr = inputDeadlineDate.getText().toString();
@@ -182,8 +182,8 @@ public class ActivityNote extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem settingsMenuItem = menu.findItem(R.id.settings);
-        settingsMenuItem.setVisible(false);
+        MenuItem shareMenuItem = menu.findItem(R.id.share);
+        shareMenuItem.setVisible(false);
         return true;
     }
 
@@ -192,6 +192,8 @@ public class ActivityNote extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.save:
                 onSaveNoteClick();
+
+
         }
         return super.onOptionsItemSelected(item);
     }

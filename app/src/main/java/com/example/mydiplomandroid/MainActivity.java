@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
                 addNewNote(view);
             }
         });
+
+
     }
+
 
     //открытие активити для добавления новой записи
     public void addNewNote(View view) {
@@ -81,15 +85,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent = null;
         switch (item.getItemId()) {
-            case R.id.settings:
-                intent = new Intent(MainActivity.this, SettingsActivity.class);
+            case R.id.share:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("plain/text");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "your body");
+                startActivity(Intent.createChooser(sharingIntent, "share using"));
                 break;
         }
-        startActivity(intent);
+
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -103,4 +110,6 @@ public class MainActivity extends AppCompatActivity {
         }
         backPressedTime = System.currentTimeMillis();
     }
+
+
 }
