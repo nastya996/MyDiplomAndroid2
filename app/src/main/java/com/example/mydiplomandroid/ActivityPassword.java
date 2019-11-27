@@ -32,8 +32,6 @@ public class ActivityPassword extends AppCompatActivity {
     private int currentInputValue = 0;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -215,6 +213,7 @@ public class ActivityPassword extends AppCompatActivity {
         finish();
         return;
     }
+
     // переход в настройки длоя смены пароля
     public void onClickSettings(View view) {
         Intent intent = new Intent(ActivityPassword.this, SettingsActivity.class);

@@ -7,8 +7,8 @@
     <string name="delete">Удалить</string>
     <string name="cancel">Отменить</string>
     <string name="txt_enter">Введите ПИН</string>
-    <string name="btn_save">Сохранить</string>
-    <string name="settings">Настройки</string>
+    <string name="btn_save">save</string>
+    <string name="settings">настройки</string>
     <string name="main_notes">Заметки</string>
     <string name="add_note">Заметка</string>
     <string name="msg_error">Неверный пароль</string>
@@ -32,6 +32,7 @@
     <string name="day_deadline">День дедлайна</string>
 
     <string name="todo" />
+    <string name="share">share</string>
 
 
 </resources>
