@@ -195,12 +195,16 @@ public class ActivityNote extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.save:
                 onSaveNoteClick();
+                if (item.isChecked()) item.setChecked(false);
+                else item.setChecked(true);
                 return true;
             case R.id.share:
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("plain/text");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "your body");
                 startActivity(Intent.createChooser(sharingIntent, "share using"));
+                if (item.isChecked()) item.setChecked(false);
+                else item.setChecked(true);
                 break;
         }
 
